@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import './App.css';
 import { getSpotifyToken } from './adapters/getSpotifyToken';
-import { useStore } from './contexts/Store';
+import { useGlobalContext } from './contexts/GlobalContext';
 
-const App = () => {
-  const { setToken } = useStore();
+const App: React.FC = () => {
+  const { setToken } = useGlobalContext();
 
   useEffect(() => {
     getSpotifyToken
