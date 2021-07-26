@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     searchIcon: {
+      color: 'white',
       padding: theme.spacing(0, 2),
       height: '100%',
       position: 'absolute',
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: 'inherit',
     },
     inputInput: {
+      color: 'white',
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     },
