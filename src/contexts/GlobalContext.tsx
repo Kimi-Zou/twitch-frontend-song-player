@@ -4,8 +4,8 @@ import { createContext, useContext, useMemo, useState } from 'react';
 interface GlobalContextProps {
   token: string;
   setToken: React.Dispatch<React.SetStateAction<string>>;
-  songs: unknown[];
-  setSongs: React.Dispatch<React.SetStateAction<unknown[]>>;
+  songs: [];
+  setSongs: React.Dispatch<React.SetStateAction<[]>>;
   song: string;
   setSong: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({
   children,
 }: GlobalContextProviderProps) => {
   const [token, setToken] = useState('');
-  const [songs, setSongs] = useState<unknown[]>([]);
+  const [songs, setSongs] = useState<[]>([]);
   const [song, setSong] = useState('');
 
   const contextValue = useMemo(
