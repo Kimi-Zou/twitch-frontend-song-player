@@ -9,7 +9,7 @@ type SearchSong = (
 ) => void;
 
 const SearchController: React.FC = () => {
-  const { token } = useGlobalContext();
+  const { token, setSongs } = useGlobalContext();
 
   const onSubmit: SearchSong = (event, query) => {
     event.preventDefault();
@@ -21,9 +21,13 @@ const SearchController: React.FC = () => {
         Authorization: 'Bearer ' + token,
       },
       method: 'GET',
-    }).then((data) => {
-      console.log(data.data.tracks.items);
-    });
+    })
+      .then((data) => {
+        setSongs(data.data.tracks.items);
+      })
+      .catch((error) => {
+        if (error.response) console.log(error.response.data);
+      });
   };
 
   return <Search onSubmit={onSubmit} />;
