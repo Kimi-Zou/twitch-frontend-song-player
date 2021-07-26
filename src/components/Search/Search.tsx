@@ -1,20 +1,22 @@
 import { useState } from 'react';
-import { InputBase, Paper } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './SearchStyles';
-import { useGlobalContext } from '../../contexts/GlobalContext';
-import onSubmit from './SearchLogic';
 
-const Search: React.FC = () => {
+interface Props {
+  onSubmit: (event: React.FormEvent<HTMLDivElement>, query: string) => void;
+}
+
+const Search: React.FC<Props> = ({ onSubmit }) => {
   const classes = useStyles();
-  const { token } = useGlobalContext();
   const [query, setQuery] = useState('');
 
   return (
     <Paper
       className={classes.search}
       component="form"
-      onSubmit={(e) => onSubmit(e, token, query)}
+      onSubmit={(event) => onSubmit(event, query)}
     >
       <div className={classes.searchIcon}>
         <SearchIcon />

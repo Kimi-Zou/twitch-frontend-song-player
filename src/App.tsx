@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Grid } from '@material-ui/core';
-import './App.css';
+import Grid from '@material-ui/core/Grid';
+import Header from './components/Header/Header';
 import { getSpotifyToken } from './adapters/getSpotifyToken';
 import { useGlobalContext } from './contexts/GlobalContext';
-import Header from './components/Header/Header';
+import './App.css';
 
 const App: React.FC = () => {
   const { setToken } = useGlobalContext();

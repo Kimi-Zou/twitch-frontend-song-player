@@ -1,5 +1,6 @@
-import { Grid, AppBar } from '@material-ui/core';
-import Search from '../Search/Search';
+import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
+import SearchController from '../Search/SearchController';
 import useStyles from './HeaderStyles';
 
 const Header: React.FC = () => {
@@ -10,7 +11,7 @@ const Header: React.FC = () => {
       <Grid container>
         <Grid item sm={3} md={4} />
         <Grid item xs={12} sm={6} md={4}>
-          <Search />
+          <SearchController />
         </Grid>
         <Grid item sm={3} md={4} />
       </Grid>
