@@ -11,12 +11,12 @@ const Songs = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   const classes = useSongsStyles();
-  console.log(songs);
+
   return (
     <Container className={classes.container}>
       <Grid container spacing={isSmallScreen ? 2 : 4}>
         {songs.map((song) => (
-          <SongController song={song} />
+          <SongController key={song.id} song={song} />
         ))}
       </Grid>
     </Container>

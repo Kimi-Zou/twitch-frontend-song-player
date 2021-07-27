@@ -1,9 +1,11 @@
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Typography from '@material-ui/core/Typography';
+import {
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  Typography,
+} from '@material-ui/core';
 import Popover from '../../Header/Search/Popover/Popover';
 import useStyles from './SongStyles';
 
@@ -12,6 +14,7 @@ export interface iSong {
   setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
   handlePopoverOpen: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   handlePopoverClose: () => void;
+  handleClickSong: (song: {}) => void;
   open: boolean;
   song: {
     album: {
@@ -36,6 +39,7 @@ const Song: React.FC<iSong> = ({
   anchorEl,
   handlePopoverClose,
   handlePopoverOpen,
+  handleClickSong,
 }) => {
   const classes = useStyles();
   const img = song.album.images[0].url;
@@ -50,6 +54,7 @@ const Song: React.FC<iSong> = ({
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
+        onClick={() => handleClickSong(song)}
       >
         <Card className={classes.root}>
           <CardMedia image={img} className={classes.cover}></CardMedia>

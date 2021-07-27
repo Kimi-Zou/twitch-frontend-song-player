@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import Song from './Song';
 
-interface iSongController {
+export interface iSongController {
   song: {
     album: {
       images: [
@@ -11,6 +12,7 @@ interface iSongController {
       ];
     };
     name: string;
+    id: string;
     artists: [
       {
         name: string;
@@ -20,7 +22,9 @@ interface iSongController {
 }
 
 const SongController: React.FC<iSongController> = ({ song }) => {
+  const { setSong } = useGlobalContext();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
 
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -32,7 +36,9 @@ const SongController: React.FC<iSongController> = ({ song }) => {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
+  const handleClickSong = (song: {}) => {
+    setSong(song);
+  };
 
   return (
     <Song
@@ -42,6 +48,7 @@ const SongController: React.FC<iSongController> = ({ song }) => {
       setAnchorEl={setAnchorEl}
       handlePopoverOpen={handlePopoverOpen}
       handlePopoverClose={handlePopoverClose}
+      handleClickSong={handleClickSong}
     />
   );
 };
