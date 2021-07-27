@@ -16,6 +16,7 @@ export type Song = {
   ];
   name: string;
   id: string;
+  preview_url: string;
 };
 
 interface GlobalContextProps {

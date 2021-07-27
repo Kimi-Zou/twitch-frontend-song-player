@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Header from './components/Header/Header';
 import Songs from './components/Songs/Songs';
-import MusicPlayer from './components/MusicPlayer/MusicPlayer';
+import MusicPlayerController from './components/MusicPlayer/MusicPlayerController';
 import { getSpotifyToken } from './adapters/getSpotifyToken';
 import { useGlobalContext } from './contexts/GlobalContext';
 import './App.css';
@@ -32,7 +32,7 @@ const App: React.FC = () => {
         <Grid item xs={1} sm={2} />
       </Grid>
       <Grid item>
-        <MusicPlayer />
+        <MusicPlayerController />
       </Grid>
     </Grid>
   );
