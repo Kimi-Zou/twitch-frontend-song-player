@@ -4,7 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import Popover from '../Popover/Popover';
+import Popover from '../../Header/Search/Popover/Popover';
 import useStyles from './SongStyles';
 
 export interface iSong {

@@ -1,6 +1,6 @@
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
-import SearchController from '../Search/SearchController';
+import SearchController from './Search/SearchController';
 import useStyles from './HeaderStyles';
 
 const Header: React.FC = () => {

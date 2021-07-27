@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Search from './Search';
-import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 
 type SearchSong = (
   event: React.FormEvent<HTMLDivElement>,
