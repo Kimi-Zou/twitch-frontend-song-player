@@ -6,8 +6,22 @@ interface GlobalContextProps {
   setToken: React.Dispatch<React.SetStateAction<string>>;
   songs: [];
   setSongs: React.Dispatch<React.SetStateAction<[]>>;
-  song: {};
-  setSong: React.Dispatch<React.SetStateAction<{}>>;
+  song: {
+    album: {
+      images: [
+        {
+          url: string;
+        },
+      ];
+    };
+    name: string;
+    artists: [
+      {
+        name: string;
+      },
+    ];
+  } | null;
+  setSong: React.Dispatch<React.SetStateAction<null>>;
 }
 
 const GlobalContext = createContext<GlobalContextProps>({
@@ -15,8 +29,8 @@ const GlobalContext = createContext<GlobalContextProps>({
   setToken: () => '',
   songs: [],
   setSongs: () => [],
-  song: {},
-  setSong: () => {},
+  song: null,
+  setSong: () => null,
 });
 
 // Global Store Provider
@@ -29,7 +43,7 @@ export const GlobalContextProvider = ({
 }: GlobalContextProviderProps) => {
   const [token, setToken] = useState('');
   const [songs, setSongs] = useState<[]>([]);
-  const [song, setSong] = useState({});
+  const [song, setSong] = useState(null);
 
   const contextValue = useMemo(
     () => ({

@@ -4,7 +4,6 @@ const useSongCardStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      // width: 400,
       height: 80,
     },
     cover: {
@@ -17,12 +16,12 @@ const useSongCardStyles = makeStyles((theme: Theme) =>
     title: {
       fontFamily:
         'Roobert, Inter, "Helvetica Neue", Helvetica, Arial, sans-serif',
-      fontSize: '1rem',
-      marginBottom: 10,
+      fontSize: '0.9rem',
+      marginBottom: 4,
       lineHeight: 1.2,
     },
     subtitle: {
-      fontSize: '0.8rem',
+      fontSize: '0.7rem',
     },
   }),
 );
