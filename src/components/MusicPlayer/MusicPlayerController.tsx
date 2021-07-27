@@ -3,9 +3,10 @@ import MusicPlayer from './MusicPlayer';
 
 const MusicPlayerController = () => {
   const audioRef = useRef(null);
-  const audioNode = audioRef.current;
+  const audioNode: HTMLAudioElement | null = audioRef.current;
+
   // test
-  console.log(audioRef.current);
+  // console.log(audioNode);
 
   return <MusicPlayer audioRef={audioRef} audioNode={audioNode} />;
 };
