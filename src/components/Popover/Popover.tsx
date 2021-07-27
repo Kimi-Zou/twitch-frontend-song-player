@@ -36,7 +36,6 @@ const Popover: React.FC<iPopover> = ({
       }}
       onClose={handlePopoverClose}
       disableRestoreFocus
-      disableScrollLock
     >
       <PlayArrowIcon className={classes.playIcon} />
     </MuiPopover>
