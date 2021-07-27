@@ -8,29 +8,16 @@ import {
 } from '@material-ui/core';
 import Popover from '../../Header/Search/Popover/Popover';
 import useStyles from './SongStyles';
+import { Song as SongType } from '../../../contexts/GlobalContext';
 
 export interface iSong {
   anchorEl: HTMLElement | null;
   setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
   handlePopoverOpen: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   handlePopoverClose: () => void;
-  handleClickSong: (song: {}) => void;
+  handleClickSong: (song: SongType) => void;
   open: boolean;
-  song: {
-    album: {
-      images: [
-        {
-          url: string;
-        },
-      ];
-    };
-    name: string;
-    artists: [
-      {
-        name: string;
-      },
-    ];
-  };
+  song: SongType;
 }
 
 const Song: React.FC<iSong> = ({

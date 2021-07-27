@@ -1,27 +1,30 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 
 // Create Store
+export type Song = {
+  album: {
+    images: [
+      {
+        url: string;
+      },
+    ];
+  };
+  artists: [
+    {
+      name: string;
+    },
+  ];
+  name: string;
+  id: string;
+};
+
 interface GlobalContextProps {
   token: string;
   setToken: React.Dispatch<React.SetStateAction<string>>;
-  songs: [];
-  setSongs: React.Dispatch<React.SetStateAction<[]>>;
-  song: {
-    album: {
-      images: [
-        {
-          url: string;
-        },
-      ];
-    };
-    name: string;
-    artists: [
-      {
-        name: string;
-      },
-    ];
-  } | null;
-  setSong: React.Dispatch<React.SetStateAction<null>>;
+  songs: Song[];
+  setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
+  song: Song | null;
+  setSong: React.Dispatch<React.SetStateAction<Song | null>>;
 }
 
 const GlobalContext = createContext<GlobalContextProps>({
@@ -42,8 +45,8 @@ export const GlobalContextProvider = ({
   children,
 }: GlobalContextProviderProps) => {
   const [token, setToken] = useState('');
-  const [songs, setSongs] = useState<[]>([]);
-  const [song, setSong] = useState(null);
+  const [songs, setSongs] = useState<Song[]>([]);
+  const [song, setSong] = useState<Song | null>(null);
 
   const contextValue = useMemo(
     () => ({

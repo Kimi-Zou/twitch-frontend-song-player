@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
+import {
+  useGlobalContext,
+  Song as SongType,
+} from '../../../contexts/GlobalContext';
 import Song from './Song';
 
 export interface iSongController {
-  song: {
-    album: {
-      images: [
-        {
-          url: string;
-        },
-      ];
-    };
-    name: string;
-    id: string;
-    artists: [
-      {
-        name: string;
-      },
-    ];
-  };
+  song: SongType;
 }
 
 const SongController: React.FC<iSongController> = ({ song }) => {
@@ -36,7 +24,7 @@ const SongController: React.FC<iSongController> = ({ song }) => {
     setAnchorEl(null);
   };
 
-  const handleClickSong = (song: {}) => {
+  const handleClickSong = (song: SongType) => {
     setSong(song);
   };
 
