@@ -4,6 +4,7 @@ import VolumeControlsController from './VolumeControls/VolumeControlsController'
 import ProgressBarController from './ProgressBar/ProgressBarController';
 import useMusicPlayerStyles from './MusicPlayerStyles';
 import { useMusicPlayerContext } from '../../contexts/MusicPlayerContext';
+import PlayControlsController from './PlayControls/PlayControlsController';
 
 interface iMusicPlayer {
   audioRef: React.MutableRefObject<null>;
@@ -21,8 +22,8 @@ const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef }) => {
           <SongCard />
         </Grid>
         <Grid item container md={9}>
-          <Grid item md={1}>
-            Play Controls
+          <Grid item md={1} container alignItems="center" justify="center">
+            <PlayControlsController />
           </Grid>
           <Grid
             item
