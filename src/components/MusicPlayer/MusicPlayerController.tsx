@@ -1,14 +1,12 @@
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useEffect, useRef } from 'react';
+import { useMusicPlayerContext } from '../../contexts/MusicPlayerContext';
 import MusicPlayer from './MusicPlayer';
 
 const MusicPlayerController = () => {
-  const { setAudioNode } = useGlobalContext();
+  const { setAudioNode } = useMusicPlayerContext();
   const audioRef = useRef(null);
 
   useEffect(() => {
-    console.log(audioRef.current);
     if (audioRef.current) setAudioNode(audioRef.current);
   }, [audioRef, setAudioNode]);
 

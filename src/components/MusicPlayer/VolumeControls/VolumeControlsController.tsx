@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
+import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
 import VolumeControls from './VolumeControls';
 
 const VolumeControlsController: React.FC = () => {
-  const { audioNode } = useGlobalContext();
+  const { audioNode } = useMusicPlayerContext();
   const [value, setValue] = useState<number>(30);
 
   const handleChange = (event: any, newValue: number | number[]) => {

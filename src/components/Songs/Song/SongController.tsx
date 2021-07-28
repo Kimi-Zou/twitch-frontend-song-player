@@ -3,6 +3,7 @@ import {
   useGlobalContext,
   Song as SongType,
 } from '../../../contexts/GlobalContext';
+import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
 import Song from './Song';
 
 export interface iSongController {
@@ -11,6 +12,7 @@ export interface iSongController {
 
 const SongController: React.FC<iSongController> = ({ song }) => {
   const { setSong } = useGlobalContext();
+  const { audioNode, setDuration } = useMusicPlayerContext();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
 
@@ -26,6 +28,14 @@ const SongController: React.FC<iSongController> = ({ song }) => {
 
   const handleClickSong = (song: SongType) => {
     setSong(song);
+    if (audioNode) {
+      audioNode.src = song.preview_url;
+      audioNode.onloadedmetadata = () => {
+        console.log(audioNode.duration);
+        const newValue = '0:' + Math.round(audioNode.duration || 0);
+        setDuration(newValue);
+      };
+    }
   };
 
   return (

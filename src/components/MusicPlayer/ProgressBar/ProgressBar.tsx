@@ -1,20 +1,15 @@
 import { Grid, Slider, Typography } from '@material-ui/core';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
+import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
 import useProgressBarStyles from './ProgressBarStyles';
 
 interface iProgressBar {
-  duration: string;
-  currentTime: string;
   handleChange: (event: any, newValue: number | number[]) => void;
 }
 
-const ProgressBar: React.FC<iProgressBar> = ({
-  duration,
-  currentTime,
-  handleChange,
-}) => {
+const ProgressBar: React.FC<iProgressBar> = ({ handleChange }) => {
   const classes = useProgressBarStyles();
-  const { audioNode } = useGlobalContext();
+  const { audioNode, currentTime, duration, progressBarValue } =
+    useMusicPlayerContext();
 
   return (
     <div className={classes.root}>
@@ -25,7 +20,7 @@ const ProgressBar: React.FC<iProgressBar> = ({
         <Grid item xs={10}>
           <Slider
             aria-label="custom thumb label"
-            defaultValue={0}
+            value={progressBarValue}
             onChange={handleChange}
             disabled={audioNode?.duration ? false : true}
           />

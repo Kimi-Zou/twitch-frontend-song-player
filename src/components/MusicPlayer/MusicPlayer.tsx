@@ -2,8 +2,8 @@ import { AppBar, Grid } from '@material-ui/core';
 import SongCard from './SongCard/SongCard';
 import VolumeControlsController from './VolumeControls/VolumeControlsController';
 import ProgressBarController from './ProgressBar/ProgressBarController';
-import { useGlobalContext } from '../../contexts/GlobalContext';
 import useMusicPlayerStyles from './MusicPlayerStyles';
+import { useMusicPlayerContext } from '../../contexts/MusicPlayerContext';
 
 interface iMusicPlayer {
   audioRef: React.MutableRefObject<null>;
@@ -11,8 +11,8 @@ interface iMusicPlayer {
 
 const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef }) => {
   const classes = useMusicPlayerStyles();
-  const { song } = useGlobalContext();
-  const audioUrl = song && song.preview_url ? song.preview_url : '';
+  const { audioNode, handleTimeUpdate, handleBarValueUpdate } =
+    useMusicPlayerContext();
 
   return (
     <AppBar className={classes.appBar} position="fixed">
@@ -46,7 +46,17 @@ const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef }) => {
             <VolumeControlsController />
           </Grid>
         </Grid>
-        <audio ref={audioRef} src={audioUrl} />
+        <audio
+          ref={audioRef}
+          preload="metadata"
+          onTimeUpdate={() => {
+            if (audioNode) {
+              handleTimeUpdate(audioNode.currentTime);
+              handleBarValueUpdate(audioNode.currentTime, audioNode.duration);
+            }
+          }}
+          autoPlay
+        />
       </Grid>
     </AppBar>
   );

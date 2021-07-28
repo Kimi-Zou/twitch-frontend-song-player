@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 
-// Create Store
+// Create Context
 export type Song = {
   album: {
     images: [
@@ -19,9 +19,7 @@ export type Song = {
   preview_url: string;
 };
 
-interface GlobalContextProps {
-  audioNode: HTMLAudioElement | null;
-  setAudioNode: React.Dispatch<React.SetStateAction<null>>;
+interface iGlobalContext {
   token: string;
   setToken: React.Dispatch<React.SetStateAction<string>>;
   songs: Song[];
@@ -30,9 +28,7 @@ interface GlobalContextProps {
   setSong: React.Dispatch<React.SetStateAction<Song | null>>;
 }
 
-const GlobalContext = createContext<GlobalContextProps>({
-  audioNode: null,
-  setAudioNode: () => HTMLAudioElement,
+const GlobalContext = createContext<iGlobalContext>({
   token: '',
   setToken: () => '',
   songs: [],
@@ -41,25 +37,18 @@ const GlobalContext = createContext<GlobalContextProps>({
   setSong: () => null,
 });
 
-// Global Store Provider
-interface GlobalContextProviderProps {
+// Context Provider
+interface iGlobalContextProvider {
   children: JSX.Element;
 }
 
-export const GlobalContextProvider = ({
-  children,
-}: GlobalContextProviderProps) => {
-  const [audioNode, setAudioNode] = useState(null);
+export const GlobalContextProvider = ({ children }: iGlobalContextProvider) => {
   const [token, setToken] = useState('');
   const [songs, setSongs] = useState<Song[]>([]);
   const [song, setSong] = useState<Song | null>(null);
 
-  console.log(audioNode);
-
   const contextValue = useMemo(
     () => ({
-      audioNode,
-      setAudioNode,
       token,
       setToken,
       songs,
@@ -67,7 +56,7 @@ export const GlobalContextProvider = ({
       song,
       setSong,
     }),
-    [token, setToken, songs, setSongs, song, setSong, audioNode, setAudioNode],
+    [token, setToken, songs, setSongs, song, setSong],
   );
 
   return (
@@ -77,5 +66,5 @@ export const GlobalContextProvider = ({
   );
 };
 
-// Custom hook to use Global Store
+// Custom Hook to use Global Context
 export const useGlobalContext = () => useContext(GlobalContext);

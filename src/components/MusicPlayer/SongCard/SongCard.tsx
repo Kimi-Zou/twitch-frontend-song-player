@@ -16,7 +16,6 @@ const SongCard = () => {
     artist = song.artists[0].name;
   }
 
-  console.log(song);
   return (
     <Card className={classes.root}>
       <CardMedia image={image} className={classes.cover}></CardMedia>
