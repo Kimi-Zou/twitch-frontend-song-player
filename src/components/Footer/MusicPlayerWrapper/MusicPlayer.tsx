@@ -1,11 +1,11 @@
 import React from 'react';
 import { AppBar, Grid } from '@material-ui/core';
-import SongCard from './SongCard/SongCard';
-import VolumeControlsController from './VolumeControls/VolumeControlsController';
-import ProgressBarController from './ProgressBar/ProgressBarController';
+import SongCard from '../SongCard/SongCard';
+import VolumeControlsController from '../VolumeControls/VolumeControlsController';
+import ProgressBarController from '../ProgressBar/ProgressBarController';
 import useMusicPlayerStyles from './MusicPlayerStyles';
-import PlayControlsController from './PlayControls/PlayControlsController';
-import { Action } from '../../contexts/MusicPlayerReducer';
+import PlayControlsController from '../PlayControls/PlayControlsController';
+import { Action } from '../../../contexts/MusicPlayerReducer';
 
 // Type
 interface iMusicPlayer {

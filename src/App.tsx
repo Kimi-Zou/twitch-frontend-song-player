@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Header from './components/Header/Header';
-import Songs from './components/Songs/Songs';
-import MusicPlayerController from './components/MusicPlayer/MusicPlayerController';
+import Header from './components/Header/Header/Header';
+import Songs from './components/Main/Songs/Songs';
+import MusicPlayerController from './components/Footer/MusicPlayerWrapper/MusicPlayerController';
 import { getSpotifyToken } from './adapters/getSpotifyToken';
 import { useGlobalContext } from './contexts/GlobalContext';
 import './App.css';

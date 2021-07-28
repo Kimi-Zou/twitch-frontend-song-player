@@ -1,8 +1,8 @@
 import Grid from '@material-ui/core/Grid';
 import { Container, useMediaQuery } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { useGlobalContext } from '../../contexts/GlobalContext';
-import SongController from './Song/SongController';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
+import SongController from '../Song/SongController';
 import useSongsStyles from './SongsStyles';
 
 const Songs = () => {

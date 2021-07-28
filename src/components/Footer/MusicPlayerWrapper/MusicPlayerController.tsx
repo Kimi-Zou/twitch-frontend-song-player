@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useMusicContext } from '../../contexts/MusicPlayerContext';
+import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import MusicPlayer from './MusicPlayer';
 
 const MusicPlayerController = () => {

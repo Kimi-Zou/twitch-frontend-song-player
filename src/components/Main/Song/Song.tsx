@@ -6,7 +6,7 @@ import {
   CardActionArea,
   Typography,
 } from '@material-ui/core';
-import Popover from '../../Header/Search/Popover/Popover';
+import Popover from '../Popover/Popover';
 import useStyles from './SongStyles';
 import { Song as SongType } from '../../../contexts/GlobalContext';
 

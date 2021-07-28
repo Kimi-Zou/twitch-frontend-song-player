@@ -14,14 +14,16 @@ interface iMusicPlayerContextProvider {
 }
 
 // Context
-const MusicContext = createContext({} as iMusicPlayerContext);
+const MusicPlayerContext = createContext({} as iMusicPlayerContext);
 
 export const MusicPlayerContextProvider: React.FC<iMusicPlayerContextProvider> =
   ({ children }) => {
     const value = useReducer(musicPlayerReducer, initialState);
     return (
-      <MusicContext.Provider value={value}>{children}</MusicContext.Provider>
+      <MusicPlayerContext.Provider value={value}>
+        {children}
+      </MusicPlayerContext.Provider>
     );
   };
 
-export const useMusicContext = () => useContext(MusicContext);
+export const useMusicContext = () => useContext(MusicPlayerContext);
