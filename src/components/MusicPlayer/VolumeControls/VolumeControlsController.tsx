@@ -1,17 +1,23 @@
-import { useState } from 'react';
-import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
+import { useCallback } from 'react';
+import { useMemo } from 'react';
+import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import VolumeControls from './VolumeControls';
 
 const VolumeControlsController: React.FC = () => {
-  const { audioNode } = useMusicPlayerContext();
-  const [value, setValue] = useState<number>(30);
+  const [state, dispatch] = useMusicContext();
 
-  const handleChange = (event: any, newValue: number | number[]) => {
-    if (audioNode) {
-      audioNode.volume = (newValue as number) / 100;
-    }
-    setValue(newValue as number);
-  };
+  const audioNode = useMemo(() => state.audioNode, [state.audioNode]);
+  const value = useMemo(() => state.volume, [state.volume]);
+
+  const handleChange = useCallback(
+    (event: any, newValue: number | number[]) => {
+      if (audioNode) {
+        audioNode.volume = (newValue as number) / 100;
+      }
+      dispatch({ type: 'setVolume', payload: newValue });
+    },
+    [audioNode, dispatch],
+  );
 
   return <VolumeControls value={value} handleChange={handleChange} />;
 };

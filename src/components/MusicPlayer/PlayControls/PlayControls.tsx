@@ -1,14 +1,13 @@
 import { PlayCircleFilledOutlined } from '@material-ui/icons';
 import PauseCircleFilledRoundedIcon from '@material-ui/icons/PauseCircleFilledRounded';
-import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
 import usePlayControlsStyles from './PlayControlsStyles';
 
 interface iPlayControls {
   togglePlay: () => void;
+  audioNode: HTMLAudioElement | null;
 }
 
-const PlayControls: React.FC<iPlayControls> = ({ togglePlay }) => {
-  const { audioNode } = useMusicPlayerContext();
+const PlayControls: React.FC<iPlayControls> = ({ togglePlay, audioNode }) => {
   const classes = usePlayControlsStyles();
   return (
     <div>

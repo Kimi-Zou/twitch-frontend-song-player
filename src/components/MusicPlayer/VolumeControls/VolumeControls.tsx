@@ -3,7 +3,7 @@ import { VolumeDown, VolumeUp, VolumeMute } from '@material-ui/icons';
 import useVolumeControlsStyles from './VolumeControlsStyles';
 
 interface iVolumeControls {
-  value: number;
+  value: number | number[];
   handleChange: (event: any, newValue: number | number[]) => void;
 }
 

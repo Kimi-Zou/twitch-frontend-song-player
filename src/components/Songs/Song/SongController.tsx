@@ -3,7 +3,7 @@ import {
   useGlobalContext,
   Song as SongType,
 } from '../../../contexts/GlobalContext';
-import { useMusicPlayerContext } from '../../../contexts/MusicPlayerContext';
+import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import Song from './Song';
 
 export interface iSongController {
@@ -12,7 +12,8 @@ export interface iSongController {
 
 const SongController: React.FC<iSongController> = ({ song }) => {
   const { setSong } = useGlobalContext();
-  const { audioNode, setDuration } = useMusicPlayerContext();
+  const [state, dispatch] = useMusicContext();
+
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
 
@@ -28,12 +29,14 @@ const SongController: React.FC<iSongController> = ({ song }) => {
 
   const handleClickSong = (song: SongType) => {
     setSong(song);
-    if (audioNode) {
-      audioNode.src = song.preview_url;
-      audioNode.onloadedmetadata = () => {
-        console.log(audioNode.duration);
-        const newValue = '0:' + Math.round(audioNode.duration || 0);
-        setDuration(newValue);
+    if (state.audioNode) {
+      state.audioNode.src = song.preview_url;
+      state.audioNode.volume = (state.volume as number) / 100;
+      state.audioNode.onloadedmetadata = () => {
+        if (state.audioNode) {
+          dispatch({ type: 'setDuration', payload: state.audioNode.duration });
+          dispatch({ type: 'setProgressBarValue', payload: 0 });
+        }
       };
     }
   };
