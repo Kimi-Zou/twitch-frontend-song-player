@@ -20,8 +20,6 @@ export type Song = {
 };
 
 interface iGlobalContext {
-  token: string;
-  setToken: React.Dispatch<React.SetStateAction<string>>;
   songs: Song[];
   setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
   song: Song | null;
@@ -29,8 +27,6 @@ interface iGlobalContext {
 }
 
 const GlobalContext = createContext<iGlobalContext>({
-  token: '',
-  setToken: () => '',
   songs: [],
   setSongs: () => [],
   song: null,
@@ -43,20 +39,17 @@ interface iGlobalContextProvider {
 }
 
 export const GlobalContextProvider = ({ children }: iGlobalContextProvider) => {
-  const [token, setToken] = useState('');
   const [songs, setSongs] = useState<Song[]>([]);
   const [song, setSong] = useState<Song | null>(null);
 
   const contextValue = useMemo(
     () => ({
-      token,
-      setToken,
       songs,
       setSongs,
       song,
       setSong,
     }),
-    [token, setToken, songs, setSongs, song, setSong],
+    [songs, setSongs, song, setSong],
   );
 
   return (

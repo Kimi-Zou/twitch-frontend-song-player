@@ -18,7 +18,7 @@ const SongCard = () => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia image={image} className={classes.cover}></CardMedia>
+      <CardMedia image={image} className={classes.cover} src="img"></CardMedia>
       <CardContent className={classes.content}>
         <Typography className={classes.title}>{name}</Typography>
         <Typography className={classes.subtitle}>{artist}</Typography>

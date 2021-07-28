@@ -44,7 +44,11 @@ const Song: React.FC<iSong> = ({
         onClick={() => handleClickSong(song)}
       >
         <Card className={classes.root}>
-          <CardMedia image={img} className={classes.cover}></CardMedia>
+          <CardMedia
+            image={img}
+            className={classes.cover}
+            src="img"
+          ></CardMedia>
           <CardContent className={classes.content}>
             <Typography className={classes.title}>{name}</Typography>
             <Typography className={classes.subtitle}>{artist}</Typography>

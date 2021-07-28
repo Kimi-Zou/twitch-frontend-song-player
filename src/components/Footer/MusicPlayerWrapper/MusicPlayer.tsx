@@ -17,6 +17,7 @@ interface iMusicPlayer {
 // Component
 const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
   ({ audioRef, dispatch, audioNode }) => {
+    console.log('footer: player');
     const classes = useMusicPlayerStyles();
 
     return (
@@ -26,7 +27,13 @@ const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
             <SongCard />
           </Grid>
           <Grid item container md={9}>
-            <Grid item md={1} container alignItems="center" justify="center">
+            <Grid
+              item
+              md={1}
+              container
+              alignItems="center"
+              justifyContent="center"
+            >
               <PlayControlsController />
             </Grid>
             <Grid
@@ -36,7 +43,7 @@ const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
               lg={8}
               container
               alignItems="center"
-              justify="center"
+              justifyContent="center"
             >
               <ProgressBarController />
             </Grid>
@@ -46,7 +53,7 @@ const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
               container
               direction="column"
               alignItems="center"
-              justify="center"
+              justifyContent="center"
             >
               <VolumeControlsController />
             </Grid>

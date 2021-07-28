@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from './Search';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
+import { getSpotifyToken } from '../../../adapters/getSpotifyToken';
 
 type SearchSong = (
   event: React.FormEvent<HTMLDivElement>,
@@ -9,7 +10,19 @@ type SearchSong = (
 ) => void;
 
 const SearchController: React.FC = () => {
-  const { token, setSongs } = useGlobalContext();
+  console.log('search controller');
+  const { setSongs } = useGlobalContext();
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    getSpotifyToken
+      .then((data) => {
+        setToken(data.data.access_token);
+      })
+      .catch((error) => {
+        if (error.response) console.log(error.response.data);
+      });
+  }, []);
 
   const onSubmit: SearchSong = (event, query) => {
     event.preventDefault();

@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Search: React.FC<Props> = ({ onSubmit }) => {
+  console.log('search');
   const classes = useStyles();
   const [query, setQuery] = useState('');
 

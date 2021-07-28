@@ -6,6 +6,7 @@ import SongController from '../Song/SongController';
 import useSongsStyles from './SongsStyles';
 
 const Songs = () => {
+  console.log('main: songs');
   const { songs } = useGlobalContext();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
