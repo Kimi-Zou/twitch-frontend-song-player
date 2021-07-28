@@ -1,23 +1,16 @@
-import { useState } from 'react';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import ProgressBar from './ProgressBar';
-import { AudioNode } from '../MusicPlayer';
 
-interface iProgressBarController {
-  audioNode: AudioNode;
-}
-
-const ProgressBarController: React.FC<iProgressBarController> = ({
-  audioNode,
-}) => {
-  // const [value, setValue] = useState<number>(0);
+const ProgressBarController: React.FC = () => {
+  const { audioNode } = useGlobalContext();
 
   const handleChange = (event: any, newValue: number | number[]) => {
-    if (audioNode) {
-      const time = Math.round(
-        ((newValue as number) * audioNode.duration) / 100,
-      );
-      // audioNode.currentTime = time;
-    }
+    // if (audioNode) {
+    //   const time = Math.round(
+    //     ((newValue as number) * audioNode.duration) / 100,
+    //   );
+    //   audioNode.currentTime = time;
+    // }
   };
 
   const duration = audioNode?.duration
@@ -31,7 +24,6 @@ const ProgressBarController: React.FC<iProgressBarController> = ({
 
   return (
     <ProgressBar
-      audioNode={audioNode}
       duration={duration}
       currentTime={currentTime}
       // value={value}

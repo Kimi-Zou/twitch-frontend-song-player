@@ -5,14 +5,11 @@ import ProgressBarController from './ProgressBar/ProgressBarController';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import useMusicPlayerStyles from './MusicPlayerStyles';
 
-export type AudioNode = HTMLAudioElement | null;
-
 interface iMusicPlayer {
   audioRef: React.MutableRefObject<null>;
-  audioNode: AudioNode;
 }
 
-const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef, audioNode }) => {
+const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef }) => {
   const classes = useMusicPlayerStyles();
   const { song } = useGlobalContext();
   const audioUrl = song && song.preview_url ? song.preview_url : '';
@@ -36,7 +33,7 @@ const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef, audioNode }) => {
             alignItems="center"
             justify="center"
           >
-            <ProgressBarController audioNode={audioNode} />
+            <ProgressBarController />
           </Grid>
           <Grid
             item
@@ -46,7 +43,7 @@ const MusicPlayer: React.FC<iMusicPlayer> = ({ audioRef, audioNode }) => {
             alignItems="center"
             justify="center"
           >
-            <VolumeControlsController audioNode={audioNode} />
+            <VolumeControlsController />
           </Grid>
         </Grid>
         <audio ref={audioRef} src={audioUrl} />

@@ -20,6 +20,8 @@ export type Song = {
 };
 
 interface GlobalContextProps {
+  audioNode: HTMLAudioElement | null;
+  setAudioNode: React.Dispatch<React.SetStateAction<null>>;
   token: string;
   setToken: React.Dispatch<React.SetStateAction<string>>;
   songs: Song[];
@@ -29,6 +31,8 @@ interface GlobalContextProps {
 }
 
 const GlobalContext = createContext<GlobalContextProps>({
+  audioNode: null,
+  setAudioNode: () => HTMLAudioElement,
   token: '',
   setToken: () => '',
   songs: [],
@@ -45,12 +49,17 @@ interface GlobalContextProviderProps {
 export const GlobalContextProvider = ({
   children,
 }: GlobalContextProviderProps) => {
+  const [audioNode, setAudioNode] = useState(null);
   const [token, setToken] = useState('');
   const [songs, setSongs] = useState<Song[]>([]);
   const [song, setSong] = useState<Song | null>(null);
 
+  console.log(audioNode);
+
   const contextValue = useMemo(
     () => ({
+      audioNode,
+      setAudioNode,
       token,
       setToken,
       songs,
@@ -58,7 +67,7 @@ export const GlobalContextProvider = ({
       song,
       setSong,
     }),
-    [token, setToken, songs, setSongs, song, setSong],
+    [token, setToken, songs, setSongs, song, setSong, audioNode, setAudioNode],
   );
 
   return (

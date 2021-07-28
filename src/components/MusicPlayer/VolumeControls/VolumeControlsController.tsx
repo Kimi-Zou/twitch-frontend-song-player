@@ -1,13 +1,9 @@
 import { useState } from 'react';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import VolumeControls from './VolumeControls';
 
-interface iVolumeControlsController {
-  audioNode: HTMLAudioElement | null;
-}
-
-const VolumeControlsController: React.FC<iVolumeControlsController> = ({
-  audioNode,
-}) => {
+const VolumeControlsController: React.FC = () => {
+  const { audioNode } = useGlobalContext();
   const [value, setValue] = useState<number>(30);
 
   const handleChange = (event: any, newValue: number | number[]) => {

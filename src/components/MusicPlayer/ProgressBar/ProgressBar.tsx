@@ -1,23 +1,20 @@
 import { Grid, Slider, Typography } from '@material-ui/core';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import useProgressBarStyles from './ProgressBarStyles';
-import { AudioNode } from '../MusicPlayer';
 
 interface iProgressBar {
-  audioNode: AudioNode;
   duration: string;
   currentTime: string;
-  // value: number;
   handleChange: (event: any, newValue: number | number[]) => void;
 }
 
 const ProgressBar: React.FC<iProgressBar> = ({
-  audioNode,
   duration,
   currentTime,
-  // value,
   handleChange,
 }) => {
   const classes = useProgressBarStyles();
+  const { audioNode } = useGlobalContext();
 
   return (
     <div className={classes.root}>
