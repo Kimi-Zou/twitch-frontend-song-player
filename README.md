@@ -1,46 +1,145 @@
-# Getting Started with Create React App
+# Twitch Frontend Music Player
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Project: Audio playback app that let user search and play a song.
+- View live: <a href='https://twitch-frontend.herokuapp.com//'>Twitch Frontend Music Player</a>
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Featrues](#features)
+- [Architecture Overview](#application-overview)
+- [Requirements](#requirements)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- Languages: JavaScript, TypeScript
+- Frontend: React
+- Frameworks and Libraries: Material-UI
+- API: Spotify
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br />
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Install packages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Create .env file, you can also reference to `.env.example`
 
-### `npm run eject`
+```
+REACT_APP_SPOTIFY_CLIENT=<Your Spotify client ID here>
+REACT_APP_SPOTIFY_SECRET=<Your Spotify Client Secret here>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Start server
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Features
 
-## Learn More
+1. Search a Song
+   ![search-a-song](src/readme-assets/search.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. View Songs
+   ![view-songs](src/readme-assets/view-songs.png)
+
+<br />
+
+3. Play a Song
+   ![play-a-song](src/readme-assets/play-song.png)
+
+<br />
+
+## Architecture Overview
+
+1. Relationships of Components
+   ![components](src/readme-assets/components.png)
+
+2. Architecture Pattern
+   ![architecture](src/readme-assets/architecture.png)
+3. API
+   - POST request to get Spotify token
+     ```
+     {
+       "access_token": "",
+       "token_type": "Bearer",
+       "expires_in": 3600
+     }
+     ```
+   - GET request to fetch songs based on query string
+     ```
+      {
+        "tracks": {
+          "items": [
+            {
+              "albums": {},
+              "artists": {},
+                .
+                .
+                .
+            }
+          ]
+        }
+      }
+     ```
+4. Responsive View
+   - Large Screen
+     ![large-screen](src/readme-assets/lg.png)
+   - Medium Screen
+     ![medium-screen](src/readme-assets/md.png)
+   - Small Screen
+     ![small-screen](src/readme-assets/sm.png)
+   - Extra Small Screen
+     ![extra-small-screen](src/readme-assets/xs.png)
+5. User Flow
+
+   - Type song name into search box, hit 'Enter'  
+      User will see a list of songs
+   - Hover over song card, users will see a play button
+   - Click on a song, song will start playing
+   - Control play/paused state, volumes and progress of a song with footer music player controls
+
+6. Distinct design decisions
+   - Use useContext and useReducer to manage states
+   - Use OuterController to import Global Context values and use `React.memo` on InnerController to avoid excessive component rerendering
+
+## Requirements
+
+1. Use a modern JS Library/Framework
+   - React
+2. Three different user interactions
+   - Search a song
+   - Click song to play
+   - Toggle play pause
+   - Change progress bar to fast forward or rewind
+   - Change volume
+3. A specified architectural pattern
+   - MVC
+4. 3rd Party Restful API
+   - Spotify  
+     https://developer.spotify.com/documentation/web-api/
+5. 5 UI components from Material-UI core
+   - Grid
+   - AppBar
+   - InputBase
+   - Paper
+   - CardMedia
+   - Typography
+   - Popover
+   - Slider
+6. Reusable UI
+   - Song Component
