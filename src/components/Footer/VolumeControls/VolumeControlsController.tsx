@@ -1,13 +1,12 @@
 import { useCallback } from 'react';
-import { useMemo } from 'react';
 import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import VolumeControls from './VolumeControls';
 
 const VolumeControlsController: React.FC = () => {
   const [state, dispatch] = useMusicContext();
-
-  const audioNode = useMemo(() => state.audioNode, [state.audioNode]);
-  const value = useMemo(() => state.volume, [state.volume]);
+  const audioNode = state.audioNode;
+  const value = state.volume;
+  const src = audioNode?.src;
 
   const handleChange = useCallback(
     (event: any, newValue: number | number[]) => {
@@ -19,7 +18,7 @@ const VolumeControlsController: React.FC = () => {
     [audioNode, dispatch],
   );
 
-  return <VolumeControls value={value} handleChange={handleChange} />;
+  return <VolumeControls value={value} handleChange={handleChange} src={src} />;
 };
 
 export default VolumeControlsController;

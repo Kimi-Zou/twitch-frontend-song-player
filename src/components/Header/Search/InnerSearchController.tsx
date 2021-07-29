@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Search from './Search';
-import { Song } from '../../../contexts/GlobalContext';
 import { getSpotifyToken } from '../../../adapters/getSpotifyToken';
-
-// Type
-type SearchSong = (
-  event: React.FormEvent<HTMLDivElement>,
-  query: string,
-) => void;
+import { SetSongsType } from '../../../types/types';
+import Search from './Search';
 
 interface iSearchController {
-  setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
+  setSongs: SetSongsType;
 }
 
-// Component
 const InnerSearchController: React.FC<iSearchController> = React.memo(
   ({ setSongs }) => {
     console.log('search controller');
@@ -31,7 +24,10 @@ const InnerSearchController: React.FC<iSearchController> = React.memo(
         });
     }, []);
 
-    const onSubmit: SearchSong = (event, query) => {
+    const onSubmit = (
+      event: React.FormEvent<HTMLDivElement>,
+      query: string,
+    ) => {
       event.preventDefault();
       if (!query) return;
       axios(`https://api.spotify.com/v1/search?q=${query}&type=track`, {

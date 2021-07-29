@@ -5,12 +5,15 @@ import VolumeControlsController from '../VolumeControls/VolumeControlsController
 import ProgressBarController from '../ProgressBar/ProgressBarController';
 import useMusicPlayerStyles from './MusicPlayerStyles';
 import PlayControlsController from '../PlayControls/PlayControlsController';
-import { Action } from '../../../contexts/MusicPlayerReducer';
+import { Dispatch } from '../../../types/types';
 
 // Type
 interface iMusicPlayer {
-  audioRef: React.MutableRefObject<null>;
-  dispatch: React.Dispatch<Action>;
+  audioRef:
+    | React.MutableRefObject<null>
+    | React.LegacyRef<HTMLAudioElement>
+    | null;
+  dispatch: Dispatch;
   audioNode: HTMLAudioElement | null;
 }
 

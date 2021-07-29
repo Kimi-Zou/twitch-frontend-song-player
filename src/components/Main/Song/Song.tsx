@@ -8,11 +8,11 @@ import {
 } from '@material-ui/core';
 import Popover from '../Popover/Popover';
 import useStyles from './SongStyles';
-import { Song as SongType } from '../../../contexts/GlobalContext';
+import { SongType } from '../../../types/types';
 
 export interface iSong {
-  anchorEl: HTMLElement | null;
-  setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  anchorEl: HTMLElement | undefined;
+  setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | undefined>>;
   handlePopoverOpen: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   handlePopoverClose: () => void;
   handleClickSong: (song: SongType) => void;

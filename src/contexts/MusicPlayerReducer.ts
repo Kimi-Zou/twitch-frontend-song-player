@@ -1,18 +1,4 @@
-// Type
-export type State = {
-  audioNode: HTMLAudioElement | null;
-  duration: number | undefined;
-  currentTime: number;
-  volume: number | number[];
-  progressBarValue: number;
-};
-
-export type Action =
-  | { type: 'setAudioNode'; payload: HTMLAudioElement | null }
-  | { type: 'setDuration'; payload: number }
-  | { type: 'setCurrentTime'; payload: number }
-  | { type: 'setVolume'; payload: number | number[] }
-  | { type: 'setProgressBarValue'; payload: number };
+import { MusicPlayerState, MusicPlayerAction } from '../types/types';
 
 // Initial state
 export const initialState = {
@@ -24,7 +10,10 @@ export const initialState = {
 };
 
 // Reducer
-const musicPlayerReducer = (state: State, action: Action) => {
+const musicPlayerReducer = (
+  state: MusicPlayerState,
+  action: MusicPlayerAction,
+) => {
   switch (action.type) {
     case 'setAudioNode':
       return { ...state, audioNode: action.payload };

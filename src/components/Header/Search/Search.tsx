@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
+import { Paper, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './SearchStyles';
 
@@ -23,7 +22,7 @@ const Search: React.FC<Props> = ({ onSubmit }) => {
         <SearchIcon />
       </div>
       <InputBase
-        placeholder="Search…"
+        placeholder="Search a song…"
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,

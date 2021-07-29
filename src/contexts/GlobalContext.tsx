@@ -1,36 +1,19 @@
 import { createContext, useContext, useMemo, useState } from 'react';
+import { SongType, SetSongsType, SetSongType } from '../types/types';
 
 // Create Context
-export type Song = {
-  album: {
-    images: [
-      {
-        url: string;
-      },
-    ];
-  };
-  artists: [
-    {
-      name: string;
-    },
-  ];
-  name: string;
-  id: string;
-  preview_url: string;
-};
-
 interface iGlobalContext {
-  songs: Song[];
-  setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
-  song: Song | null;
-  setSong: React.Dispatch<React.SetStateAction<Song | null>>;
+  songs: SongType[];
+  setSongs: SetSongsType;
+  song: SongType | undefined;
+  setSong: SetSongType;
 }
 
 const GlobalContext = createContext<iGlobalContext>({
   songs: [],
   setSongs: () => [],
-  song: null,
-  setSong: () => null,
+  song: undefined,
+  setSong: () => undefined,
 });
 
 // Context Provider
@@ -39,8 +22,8 @@ interface iGlobalContextProvider {
 }
 
 export const GlobalContextProvider = ({ children }: iGlobalContextProvider) => {
-  const [songs, setSongs] = useState<Song[]>([]);
-  const [song, setSong] = useState<Song | null>(null);
+  const [songs, setSongs] = useState<SongType[]>([]);
+  const [song, setSong] = useState<SongType | undefined>(undefined);
 
   const contextValue = useMemo(
     () => ({

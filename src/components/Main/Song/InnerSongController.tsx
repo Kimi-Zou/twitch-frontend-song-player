@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { Song as SongType } from '../../../contexts/GlobalContext';
-import { Action } from '../../../contexts/MusicPlayerReducer';
+import { Dispatch, SetSongType, SongType } from '../../../types/types';
 import Song from './Song';
 
 export interface iSongController {
   song: SongType;
-  setSong: React.Dispatch<React.SetStateAction<SongType | null>>;
+  setSong: SetSongType;
   audioNode: HTMLAudioElement | null;
-  dispatch: React.Dispatch<Action>;
+  dispatch: Dispatch;
 }
 
 const InnerSongController: React.FC<iSongController> = React.memo(
   ({ song, setSong, audioNode, dispatch }) => {
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | undefined>(
+      undefined,
+    );
     const open = Boolean(anchorEl);
 
     const handlePopoverOpen = (
@@ -22,7 +23,7 @@ const InnerSongController: React.FC<iSongController> = React.memo(
     };
 
     const handlePopoverClose = () => {
-      setAnchorEl(null);
+      setAnchorEl(undefined);
     };
 
     const handleClickSong = (song: SongType) => {

@@ -1,14 +1,13 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { Container, useMediaQuery } from '@material-ui/core';
+import { Container, useMediaQuery, Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { Song } from '../../../contexts/GlobalContext';
-import OuterSongController from '../Song/OuterSongController';
+import { SongType } from '../../../types/types';
 import useSongsStyles from './SongsStyles';
+import OuterSongController from '../Song/OuterSongController';
 
 // Type
 interface iSongs {
-  songs: Song[];
+  songs: SongType[];
 }
 
 // Component

@@ -1,6 +1,4 @@
-import { useCallback } from 'react';
-import { useEffect } from 'react';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import ProgressBar from './ProgressBar';
 

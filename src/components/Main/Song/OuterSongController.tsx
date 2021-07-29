@@ -1,10 +1,11 @@
 import InnerSongController from './InnerSongController';
-import { useGlobalContext, Song } from '../../../contexts/GlobalContext';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import { useMusicContext } from '../../../contexts/MusicPlayerContext';
+import { SongType } from '../../../types/types';
 
 // Type
 interface iOuterSongController {
-  song: Song;
+  song: SongType;
 }
 
 // Component

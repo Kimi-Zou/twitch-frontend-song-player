@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
 import { useCallback } from 'react';
 import { useMusicContext } from '../../../contexts/MusicPlayerContext';
 import PlayControls from './PlayControls';
 
 const PlayControlsController: React.FC = () => {
   const [state] = useMusicContext();
+  const paused = state.audioNode?.paused;
 
   const togglePlay = useCallback(() => {
     if (state.audioNode?.paused) {
@@ -14,9 +14,7 @@ const PlayControlsController: React.FC = () => {
     }
   }, [state.audioNode]);
 
-  const audioNode = useMemo(() => state.audioNode, [state.audioNode]);
-
-  return <PlayControls togglePlay={togglePlay} audioNode={audioNode} />;
+  return <PlayControls togglePlay={togglePlay} paused={paused} />;
 };
 
 export default PlayControlsController;

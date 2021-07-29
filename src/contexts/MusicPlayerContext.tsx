@@ -1,22 +1,10 @@
-import { useReducer } from 'react';
-import { createContext, useContext } from 'react';
-import musicPlayerReducer, {
-  initialState,
-  State,
-  Action,
-} from './MusicPlayerReducer';
+import { useReducer, createContext, useContext } from 'react';
+import musicPlayerReducer, { initialState } from './musicPlayerReducer';
+import { MusicPlayerState, Dispatch } from '../types/types';
 
-// Type
-type iMusicPlayerContext = [State, React.Dispatch<Action>];
+const MusicPlayerContext = createContext({} as [MusicPlayerState, Dispatch]);
 
-interface iMusicPlayerContextProvider {
-  children: JSX.Element;
-}
-
-// Context
-const MusicPlayerContext = createContext({} as iMusicPlayerContext);
-
-export const MusicPlayerContextProvider: React.FC<iMusicPlayerContextProvider> =
+export const MusicPlayerContextProvider: React.FC<{ children: JSX.Element }> =
   ({ children }) => {
     const value = useReducer(musicPlayerReducer, initialState);
     return (

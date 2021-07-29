@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { Action } from '../../../contexts/MusicPlayerReducer';
+import { Dispatch } from '../../../types/types';
 import MusicPlayer from './MusicPlayer';
 
 // Type
 interface iInnerMusicPlayerController {
-  dispatch: React.Dispatch<Action>;
+  dispatch: Dispatch;
   audioNode: HTMLAudioElement | null;
 }
 

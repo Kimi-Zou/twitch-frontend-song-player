@@ -1,7 +1,6 @@
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import OuterSearchController from '../Search/OuterSearchController';
+import { AppBar, Grid } from '@material-ui/core';
 import useStyles from './HeaderStyles';
+import OuterSearchController from '../Search/OuterSearchController';
 
 const Header: React.FC = () => {
   const classes = useStyles();

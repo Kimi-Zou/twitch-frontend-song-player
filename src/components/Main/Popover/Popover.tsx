@@ -1,11 +1,10 @@
-import { Popover as MuiPopover } from '@material-ui/core';
-import { useMediaQuery } from '@material-ui/core';
+import { Popover as MuiPopover, useMediaQuery } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import popoverStyles from './PopoverStyles';
 
 interface iPopover {
-  anchorEl: HTMLElement | null;
+  anchorEl: HTMLElement | undefined;
   handlePopoverClose: () => void;
   open: boolean;
 }
