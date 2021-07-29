@@ -28,7 +28,6 @@ const Song: React.FC<iSong> = ({
   handlePopoverOpen,
   handleClickSong,
 }) => {
-  console.log('song');
   const classes = useStyles();
   const img = song.album.images[0].url;
   const name = song.name;

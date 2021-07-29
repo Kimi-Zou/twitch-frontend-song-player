@@ -20,7 +20,6 @@ interface iMusicPlayer {
 // Component
 const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
   ({ audioRef, dispatch, audioNode }) => {
-    console.log('footer: player');
     const classes = useMusicPlayerStyles();
 
     return (

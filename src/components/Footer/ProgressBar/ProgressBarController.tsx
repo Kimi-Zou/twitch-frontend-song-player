@@ -9,12 +9,6 @@ const ProgressBarController: React.FC = () => {
   const currentTime = state.currentTime;
   const barValue = state.progressBarValue;
 
-  useEffect(() => {
-    let newBarValue = 0;
-    if (duration) newBarValue = Math.round((currentTime / duration) * 100);
-    dispatch({ type: 'setProgressBarValue', payload: newBarValue });
-  }, [currentTime, duration, dispatch]);
-
   const formatTime = (time: number) => {
     let newTime = '';
     if (time === 0) {
@@ -32,6 +26,12 @@ const ProgressBarController: React.FC = () => {
       duration === 0 ? '0:00' : '0:' + Math.round(duration || 0);
     return newDuration;
   };
+
+  useEffect(() => {
+    let newBarValue = 0;
+    if (duration) newBarValue = Math.round((currentTime / duration) * 100);
+    dispatch({ type: 'setProgressBarValue', payload: newBarValue });
+  }, [currentTime, duration, dispatch]);
 
   const handleChange = useCallback(
     (event: any, newValue: number | number[]) => {

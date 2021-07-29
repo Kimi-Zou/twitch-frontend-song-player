@@ -11,7 +11,6 @@ interface iVolumeControls {
 
 const VolumeControls: React.FC<iVolumeControls> = React.memo(
   ({ value, handleChange, src }) => {
-    console.log('volume');
     const classes = useVolumeControlsStyles();
 
     return (

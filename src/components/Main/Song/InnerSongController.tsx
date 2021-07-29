@@ -30,7 +30,6 @@ const InnerSongController: React.FC<iSongController> = React.memo(
       setSong(song);
       if (audioNode) {
         audioNode.src = song.preview_url;
-        // audioNode.volume = (volume as number) / 100;
         audioNode.onloadedmetadata = () => {
           if (audioNode) {
             dispatch({ type: 'setDuration', payload: audioNode.duration });

@@ -10,7 +10,6 @@ interface iPlayControls {
 
 const PlayControls: React.FC<iPlayControls> = React.memo(
   ({ togglePlay, paused }) => {
-    console.log('play control');
     const classes = usePlayControlsStyles();
     return (
       <div>

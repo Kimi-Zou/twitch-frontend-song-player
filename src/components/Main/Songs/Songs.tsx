@@ -12,7 +12,6 @@ interface iSongs {
 
 // Component
 const Songs: React.FC<iSongs> = React.memo(({ songs }) => {
-  console.log('main: songs');
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
