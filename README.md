@@ -32,7 +32,7 @@
 npm install
 ```
 
-2. Create .env file, you can also reference to `.env.example`
+2. Create .env file, you can reference to `.env.example`
 
 ```
 REACT_APP_SPOTIFY_CLIENT=<Your Spotify client ID here>
@@ -49,28 +49,29 @@ npm start
 
 ## Features
 
-1. Search a Song
+1. Search a Song  
    ![search-a-song](src/readme-assets/search.png)
 
 <br />
 
-2. View Songs
+2. View Songs  
    ![view-songs](src/readme-assets/view-songs.png)
 
 <br />
 
-3. Play a Song
+3. Play a Song  
    ![play-a-song](src/readme-assets/play-song.png)
 
 <br />
 
 ## Architecture Overview
 
-1. Relationships of Components
+1. Relationships of Components  
    ![components](src/readme-assets/components.png)
 
-2. Architecture Pattern
+2. Architecture Pattern  
    ![architecture](src/readme-assets/architecture.png)
+
 3. API
    - POST request to get Spotify token
      ```
@@ -96,17 +97,18 @@ npm start
         }
       }
      ```
-4. Responsive View
-   - Large Screen
-     ![large-screen](src/readme-assets/lg.png)
-   - Medium Screen
-     ![medium-screen](src/readme-assets/md.png)
-   - Small Screen
-     ![small-screen](src/readme-assets/sm.png)
-   - Extra Small Screen
-     ![extra-small-screen](src/readme-assets/xs.png)
-5. User Flow
 
+4. Responsive View
+   - Large Screen  
+     ![large-screen](src/readme-assets/lg.png)
+   - Medium Screen  
+     ![medium-screen](src/readme-assets/md.png)
+   - Small Screen  
+      <img src='src/readme-assets/sm.png' width='500' alt='small-screen'>
+   - Extra Small Screen  
+      <img src='src/readme-assets/xs.png' width='350' alt='extra-small-screen'>
+
+5. User Flow
    - Type song name into search box, hit 'Enter'  
       User will see a list of songs
    - Hover over song card, users will see a play button
@@ -121,17 +123,21 @@ npm start
 
 1. Use a modern JS Library/Framework
    - React
+
 2. Three different user interactions
    - Search a song
    - Click song to play
    - Toggle play pause
    - Change progress bar to fast forward or rewind
    - Change volume
+
 3. A specified architectural pattern
    - MVC
+
 4. 3rd Party Restful API
    - Spotify  
      https://developer.spotify.com/documentation/web-api/
+
 5. 5 UI components from Material-UI core
    - Grid
    - AppBar
@@ -141,5 +147,6 @@ npm start
    - Typography
    - Popover
    - Slider
+
 6. Reusable UI
    - Song Component
