@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from 'react';
-import musicPlayerReducer, { initialState } from './musicPlayerReducer';
+import musicPlayerReducer, { initialState } from './MusicPlayerReducer';
 import { MusicPlayerState, Dispatch } from '../types/types';
 
 const MusicPlayerContext = createContext({} as [MusicPlayerState, Dispatch]);
