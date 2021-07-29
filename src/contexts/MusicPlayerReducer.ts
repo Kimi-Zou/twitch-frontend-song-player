@@ -19,7 +19,7 @@ export const initialState = {
   audioNode: null,
   duration: 0,
   currentTime: 0,
-  volume: 30,
+  volume: 100,
   progressBarValue: 0,
 };
 

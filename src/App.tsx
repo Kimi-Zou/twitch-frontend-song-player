@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import Header from './components/Header/Header/Header';
-import Songs from './components/Main/Songs/Songs';
-import MusicPlayerController from './components/Footer/MusicPlayerWrapper/MusicPlayerController';
+import SongsController from './components/Main/Songs/SongsController';
+import OuterMusicPlayerController from './components/Footer/MusicPlayerWrapper/OuterMusicPlayerController';
 import './App.css';
 
 const App: React.FC = () => {
@@ -13,12 +13,12 @@ const App: React.FC = () => {
       <Grid item container>
         <Grid item xs={1} sm={2} />
         <Grid item xs={10} sm={8}>
-          <Songs />
+          <SongsController />
         </Grid>
         <Grid item xs={1} sm={2} />
       </Grid>
       <Grid item>
-        <MusicPlayerController />
+        <OuterMusicPlayerController />
       </Grid>
     </Grid>
   );

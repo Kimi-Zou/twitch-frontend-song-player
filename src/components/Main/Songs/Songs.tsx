@@ -1,13 +1,19 @@
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Container, useMediaQuery } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
-import SongController from '../Song/SongController';
+import { Song } from '../../../contexts/GlobalContext';
+import OuterSongController from '../Song/OuterSongController';
 import useSongsStyles from './SongsStyles';
 
-const Songs = () => {
+// Type
+interface iSongs {
+  songs: Song[];
+}
+
+// Component
+const Songs: React.FC<iSongs> = React.memo(({ songs }) => {
   console.log('main: songs');
-  const { songs } = useGlobalContext();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -17,11 +23,11 @@ const Songs = () => {
     <Container className={classes.container}>
       <Grid container spacing={isSmallScreen ? 2 : 4}>
         {songs.map((song) => (
-          <SongController key={song.id} song={song} />
+          <OuterSongController key={song.id} song={song} />
         ))}
       </Grid>
     </Container>
   );
-};
+});
 
 export default Songs;
