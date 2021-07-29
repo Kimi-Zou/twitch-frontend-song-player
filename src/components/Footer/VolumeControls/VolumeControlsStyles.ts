@@ -2,7 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useVolumeControlsStyles = makeStyles({
   root: {
-    width: 200,
+    flexGrow: 1,
+  },
+  container: {
+    flexWrap: 'nowrap',
   },
 });
 

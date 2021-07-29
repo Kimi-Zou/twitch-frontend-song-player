@@ -7,6 +7,9 @@ const useMusicPlayerStyles = makeStyles((theme: Theme) =>
       bottom: 0,
       backgroundColor: 'white',
     },
+    container: {
+      flexWrap: 'nowrap',
+    },
   }),
 );
 

@@ -37,7 +37,12 @@ const VolumeControls: React.FC<iVolumeControls> = React.memo(
             </Grid>
           </Grid>
         ) : (
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            // direction="row"
+            // className={classes.container}
+          >
             <Grid item>
               {value === 0 ? (
                 <VolumeMute color="primary" />

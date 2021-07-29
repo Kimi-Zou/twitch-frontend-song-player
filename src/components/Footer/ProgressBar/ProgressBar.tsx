@@ -22,11 +22,11 @@ const ProgressBar: React.FC<iProgressBar> = ({
 
   return (
     <div className={classes.root}>
-      <Grid container direction="row" spacing={2}>
-        <Grid item xs={1}>
+      <Grid item container spacing={4} className={classes.container}>
+        <Grid item xs={2} sm={1}>
           <Typography color="primary">{formatTime(currentTime)}</Typography>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={9} sm={10}>
           <Slider
             aria-label="custom thumb label"
             value={barValue}

@@ -25,38 +25,39 @@ const MusicPlayer: React.FC<iMusicPlayer> = React.memo(
 
     return (
       <AppBar className={classes.appBar} position="fixed">
-        <Grid container>
-          <Grid item md={3}>
+        <Grid container className={classes.container}>
+          <Grid item xs={2} md={3}>
             <SongCard />
           </Grid>
-          <Grid item container md={9}>
+          <Grid item xs={10} md={9} spacing={4} container>
+            <Grid xs={1} />
             <Grid
               item
-              md={1}
+              xs={1}
               container
-              alignItems="center"
               justifyContent="center"
+              alignItems="center"
             >
               <PlayControlsController />
             </Grid>
             <Grid
               item
-              sm={6}
-              md={7}
-              lg={8}
+              xs={6}
+              lg={7}
               container
-              alignItems="center"
               justifyContent="center"
+              alignItems="center"
             >
               <ProgressBarController />
             </Grid>
             <Grid
               item
-              md={1}
+              xs={4}
+              sm={3}
+              lg={2}
               container
-              direction="column"
-              alignItems="center"
               justifyContent="center"
+              alignItems="center"
             >
               <VolumeControlsController />
             </Grid>
